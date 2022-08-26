@@ -4,7 +4,7 @@ use diesel::prelude::*;
 use diesel::result::Error;
 use serde::{Deserialize, Serialize};
 
-#[derive(Identifiable, Queryable, Serialize, Deserialize, PartialEq, Debug)]
+#[derive(Identifiable, Queryable, Serialize, Deserialize, PartialEq, Eq, Debug)]
 #[diesel(table_name = users)]
 pub struct User {
     pub id: i32,
@@ -14,7 +14,7 @@ pub struct User {
 }
 
 #[derive(
-    Identifiable, Queryable, Associations, Serialize, Deserialize, PartialEq, Debug, Default,
+    Identifiable, Queryable, Associations, Serialize, Deserialize, PartialEq, Eq, Debug, Default,
 )]
 #[diesel(belongs_to(User))]
 #[diesel(table_name = todos)]
